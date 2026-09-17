@@ -1,0 +1,140 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="MegaWebProje.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="tr">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - ASP.NET </title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <style>
+        /* GÖRSELE ÖZEL YENİ MENÜ TASARIMI */
+        
+        /* Ana Navbar Arka Planı (Gece Mavisi/Lacivert) */
+        .custom-navbar { background-color: #0b1120; border-bottom: 1px solid #1f2937; padding: 12px 0; }
+        
+        /* Logo Kutusu (Mavi Oval Kare) */
+        .brand-box { background-color: #2185d0; border-radius: 10px; width: 44px; height: 44px; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .brand-box svg { width: 24px; height: 24px; stroke: white; }
+        
+        /* Yazı Tipleri ve Renkler (Üst üste binme sorunu çözüldü) */
+        .brand-title { font-size: 17px; font-weight: 800; color: #ffffff; letter-spacing: 0.5px; margin-bottom: 2px; }
+        .brand-subtitle { font-size: 11px; color: #6b7280; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; display: block; }
+        
+        /* Menü Linkleri (Ana Sayfa ve Raporlar) */
+        .nav-link-custom { color: #9ca3af !important; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; padding: 8px 16px !important; transition: all 0.2s; }
+        .nav-link-custom:hover { color: #ffffff !important; }
+        
+        /* Aktif Sayfa (Beyaz Renk) */
+        .nav-link-active { color: #ffffff !important; }
+        
+        /* Vektörel (SVG) İkon Boyutları */
+        .nav-icon { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+        .nav-icon-green { stroke: #10b981; }
+        
+        /* Dropdown (Açılır Menü) Ayarları */
+        .custom-dropdown:hover .dropdown-menu { display: block; margin-top: 0; }
+        .navbar .dropdown-menu { z-index: 9999 !important; position: absolute !important; background-color: #1f2937; border: 1px solid #374151; border-radius: 8px; padding: 8px 0; }
+        .dropdown-item { color: #d1d5db; font-size: 13px; font-weight: 500; padding: 8px 20px; transition: 0.2s; }
+        .dropdown-item:hover { background-color: #374151; color: #ffffff; }
+        .dropdown-divider { border-top-color: #374151; }
+    </style>
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+            </Scripts>
+        </asp:ScriptManager>
+
+       <nav class="navbar navbar-expand-sm navbar-toggleable-sm custom-navbar">
+            <div class="container">
+                <!-- KURUMSAL VE İKONLU BAŞLIK ALANI -->
+                <a class="navbar-brand d-flex align-items-center gap-3" runat="server" href="~/" style="text-decoration: none;">
+                    <div class="brand-box">
+                        <!-- Mavi Kutudaki Bina İkonu (SVG) -->
+                        <svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V5a2 2 0 012-2h10a2 2 0 012 2v16M9 21v-4a2 2 0 012-2h2a2 2 0 012 2v4M9 7h6M9 11h6M9 15h6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div>
+                        <div class="brand-title">MEGA İŞ ÇÖZÜMLERİ</div>
+                        <div class="brand-subtitle">KURUMSAL KAYNAK & ADRES YÖNETİMİ</div>
+                    </div>
+                </a>
+
+                <button type="button" class="navbar-toggler border-0" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-end">
+                    <ul class="navbar-nav gap-2">
+                        
+                        <!-- Ana Sayfa Linki (Beyaz Renkli ve Ev İkonlu) -->
+                        <li class="nav-item">
+                            <a id="lnkAnaSayfa" runat="server" class="nav-link nav-link-custom nav-link-active" href="~/">
+                                <!-- Ana Sayfa Ev İkonu (SVG) -->
+                                <svg class="nav-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path><path d="M9 22V12h6v10"></path></svg>
+                                Ana Sayfa
+                            </a>
+                        </li>
+                        
+                        <!-- Raporlar Açılır Menüsü (Hafif Soluk, Yeşil Belge İkonlu) -->
+                        <li class="nav-item dropdown custom-dropdown">
+                            <a id="lnkRaporlar" runat="server" class="nav-link nav-link-custom dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <!-- Rapor Belge İkonu (SVG) -->
+                                <svg class="nav-icon nav-icon-green" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><path d="M14 2v6h6"></path><path d="M16 13H8"></path><path d="M16 17H8"></path><path d="M10 9H8"></path></svg>
+                                Raporlar
+                            </a>
+                            <ul class="dropdown-menu shadow">
+                                <li><a class="dropdown-item" href="RaporOzet.aspx">Rapor 1 (Özet Tablo)</a></li>
+                                <li><a class="dropdown-item" href="RaporDetay.aspx">Rapor 2 (Detaylı Tablo)</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="KurArsivi.aspx">TCMB Kur Arşivi</a></li>
+                            </ul>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container body-content mt-3">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - MEGA İŞ ÇÖZÜMLERİ | ASP.NET</p>
+            </footer>
+        </div>
+    </form>
+    
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/Scripts/bootstrap.js") %>
+    </asp:PlaceHolder>
+
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            // Dropdown bileşenleri hover CSS ile çalıştığı için burası pırıl pırıl kalıyor.
+        });
+    </script>
+</body>
+</html>
