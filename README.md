@@ -65,13 +65,13 @@ Web.config veya ilgili .aspx.cs dosyanız içerisindeki bağlantı dizesini (con
 Visual Studio üzerinden IIS Express veya yerel IIS sunucusunu seçerek F5 tuşu ile projeyi tarayıcıda ayağa kaldırın.
 
 ## 💡 Kullanım Senaryosu
-Kullanıcı web arayüzündeki Default.aspx paneline giriş yapar ve sistemdeki kayıtlı adres listesini görüntüler.
+- Kullanıcı web arayüzündeki Default.aspx paneline giriş yapar ve sistemdeki kayıtlı adres listesini görüntüler.
 
-Arama çubuğuna yazmaya başladığı anda prefix tabanlı canlı arama devreye girerek eşleşen kayıtları anında filtreler.
+- Arama çubuğuna yazmaya başladığı anda prefix tabanlı canlı arama devreye girerek eşleşen kayıtları anında filtreler.
 
-RaporOzet.aspx veya RaporDetay.aspx sayfalarında, veriler kurumsal tasarıma uygun olarak listelenir.
+- RaporOzet.aspx veya RaporDetay.aspx sayfalarında, veriler kurumsal tasarıma uygun olarak listelenir.
 
-Sayfadaki "PDF İndir" butonuna tıklandığında, istemci tarafındaki jsPDF entegrasyonu sayesinde Türkçe karakter uyumlu özet/detay raporu saniyeler içinde cihaza indirilir.
+- Sayfadaki "PDF İndir" butonuna tıklandığında, istemci tarafındaki jsPDF entegrasyonu sayesinde Türkçe karakter uyumlu özet/detay raporu saniyeler içinde cihaza indirilir.
 
 ## 🏢 Geliştirici ve Proje Hakkında
 Bu proje, masaüstü otomasyon altyapısına sahip sistemlerin modern web teknolojilerine adaptasyonunu sağlamak ve gelişmiş jsPDF raporlama modülleriyle zenginleştirmek amacıyla Begüm Kaya tarafından geliştirilmiştir.
