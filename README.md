@@ -1,4 +1,4 @@
-# 🌐 Kurumsal Adres ve Raporlama Yönetim Sistemi (Web)
+# 🌐 Kurumsal Adres ve Raporlama Yönetim Sistemi Web Uygulaması
 
 Kurumsal Adres ve Raporlama Yönetim Sistemi, masaüstü mimaride geliştirilmiş adres otomasyon süreçlerinin modern web teknolojilerine taşınmasını sağlayan, gelişmiş CRUD operasyonları, kelime başlangıçlı canlı arama ve dinamik PDF raporlama özellikleri sunan **ASP.NET WebForms** tabanlı bir web uygulamasıdır.
 
